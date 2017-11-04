@@ -1,0 +1,11 @@
+Count number of blank lines in a sample file.
+
+-- load sample file
+
+val samplefile = sc.textFile("/home/acadgild/Desktop/21.1/sampleFile.txt")
+
+val blankLines = sc.accumulator(0)
+
+val blankCount = samplefile.foreach{ line => if(line.length() == 0) blankLines += 1}
+
+println("\n  Number of blank Lines are  : " + blankLines.value)
